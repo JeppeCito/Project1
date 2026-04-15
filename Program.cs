@@ -1,0 +1,30 @@
+﻿using MyMethods;
+
+
+Console.Write("Hvilket ord vil du søge efter? ");
+var wordInput = Console.ReadLine();
+Console.WriteLine();
+
+// Console.WriteLine("Indsæt den tekst du vil søge i: ");
+// var textInput = Console.ReadLine();
+
+var wordCount = new WordCount(wordInput!);
+var count = wordCount.GetCount();
+
+var countOutput = wordCount.CountOutput(count);
+
+Console.WriteLine($"countOutput: {countOutput}");
+
+if (countOutput == null)
+{
+    Console.WriteLine("Det søgte ord findes ikke i det angivne tekst");
+}
+if (countOutput == false)
+{
+    Console.WriteLine($"Ordet {wordInput} forekommer {count} gange.");
+}
+if (countOutput == true)
+{
+    Console.WriteLine($"Ordet {wordInput} forekommer {count} gange.");
+    File.WriteAllText("text.txt", wordCount.GetText());
+}
