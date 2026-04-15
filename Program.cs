@@ -26,5 +26,11 @@ if (countOutput == false)
 if (countOutput == true)
 {
     Console.WriteLine($"Ordet {wordInput} forekommer {count} gange.");
-    File.WriteAllText("text.txt", wordCount.GetText());
+
+    string userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    string filePath = Path.Combine(userFolder, "text.txt");
+
+    // Console.WriteLine(SaveToFile.Save(filePath, wordCount.GetText()));
+    Console.WriteLine(SaveToFile.Save(wordCount.GetText()));
+
 }
