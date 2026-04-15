@@ -33,8 +33,12 @@ internal class WordCount
         return _text;
     }
 
-    public int GetCount()
+    public Result<int> GetCount()
     {
+        if (string.IsNullOrEmpty(_word))
+        {
+            return Result<int>.Failure("Word cannot be null");
+        }
         string wordToLower = _word.ToLower();
         string textToLower = _text.ToLower();
 
@@ -50,8 +54,10 @@ internal class WordCount
             }
         }
 
-        return count;
+        return Result<int>.Success(count);
     }
+
+
 
     public bool? CountOutput(int count)
     {
